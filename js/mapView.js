@@ -24,7 +24,7 @@
         neighbourhood.forEach(function(place) {
             geocoder.geocode({'address': place.address}, function(results, status) {
                 if (status === 'OK') {
-                    addMarker(place.title, results[0].geometry.location, counter * 200);
+                    addMarker(place.title, results[0].geometry.location);
                     counter++;
                 } else {
                     throw('Geocoding was not successful because: ' + stutus);
@@ -32,15 +32,13 @@
             });
         });
     };
-    var addMarker = function(title, position, timeout) {
-        window.setTimeout(function() {
-            markers.push(new google.maps.Marker({
-                position: position,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                title: title
-            }));
-        }, timeout);
+    var addMarker = function(title, position) {
+        markers.push(new google.maps.Marker({
+            position: position,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: title
+        }));
     };
     var clearMarkers = function() {
         markers.forEach(function(marker) {
