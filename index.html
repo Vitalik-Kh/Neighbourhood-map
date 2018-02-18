@@ -6,13 +6,13 @@
     <link rel='stylesheet' type='text/css' href='styles/css/styles.css'>
 </head>
 <body lang='eng'>
-
     <div id='places-container'>
         <div id='search'>
             <input data-bind='textInput: searchInput, event: { keyup: search }' type='text' placeholder="Search..">
+            <span id='close-btn' data-bind='click: clearSearch'>&#10006;</span>
         </div>
         <ul id='places' data-bind='foreach: placesList'>
-            <li data-bind='text: title'></li>
+            <li data-bind='text: title, click: $parent.showInfoWindow'></li>
         </ul>
     </div>
     <div id='map-container'></div>

@@ -28,14 +28,27 @@ body, html {
   padding: 26px 14px 26px 20px;
 }
 
+#places-container #search {
+  position: relative;
+}
+
 #places-container #search input {
   border: none;
   height: 34px;
   background: #eff2f4;
   margin-bottom: 16px;
-  padding: 0 6px;
+  padding: 0 14px 0 6px;
   color: #33444f;
   width: 100%;
+}
+
+#places-container #search #close-btn {
+  font-size: 16px;
+  position: absolute;
+  right: 6px;
+  color: black;
+  top: 5px;
+  cursor: pointer;
 }
 
 #places-container ul#places {

@@ -27,14 +27,27 @@ body, html {
     overflow-y: auto;
     padding: 26px 14px 26px 20px;
 
-    #search input{
-        border: none;
-        height: 34px;
-        background: $places-txt;
-        margin-bottom: 16px;
-        padding: 0 6px;
-        color: $places-backgr;
-        width: 100%;
+    #search {
+        position: relative;
+
+        input {
+            border: none;
+            height: 34px;
+            background: $places-txt;
+            margin-bottom: 16px;
+            padding: 0 14px 0 6px;
+            color: $places-backgr;
+            width: 100%;
+        }
+
+        #close-btn {
+            font-size: 16px;
+            position: absolute;
+            right: 6px;
+            color: black;
+            top: 5px;
+            cursor: pointer;
+        }
     }
 
     ul#places {

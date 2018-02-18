@@ -1,34 +1,53 @@
 var app = app || {};
 
 (function() {
-    app.ListView = function() {
-        var self = this;
-        this.placesList = ko.observableArray();
-        neighbourhood.forEach(function(neighbour) {
-            self.placesList.push(new Place(neighbour));
-        });
+    app.listView = {
+        init: function() {
 
-        this.searchInput = ko.observable('');
-        var options = {
-            keys: ['title'],
-            threshold: 0.1
-        }
-        var fuse = new Fuse(neighbourhood, options);
-        //console.log(fuse.search('tr'));
-        this.search = function() {
-            var result = fuse.search(this.searchInput());
-            if (self.searchInput() == '') {
-                console.log(result);
-                self.placesList.removeAll();
-                neighbourhood.forEach(function(neighbour) {
-                    self.placesList.push(new Place(neighbour));
-                });
+            this.populatePlasesListFrom(app.model.neighbourhood);
+            var options = {
+                keys: ['title', 'type'],
+                threshold: 0.2,
+                tokenize: true,
+                matchAllTokens: true
+            }
+            this.fuse = new Fuse(app.model.neighbourhood, options);
+        },
+        populatePlasesListFrom: function(data) {
+            var self = this;
+            self.placesList.removeAll();
+            data.forEach(function(neighbour) {
+                self.placesList.push(neighbour);
+            });
+        },
+        placesList: ko.observableArray(),
+        searchInput: ko.observable(''),
+        fuse: '',
+
+        search: function(callback) {
+            var result = this.fuse.search(this.searchInput());
+            if (this.searchInput() == '') {
+                this.populatePlasesListFrom(app.model.neighbourhood);
             } else {
-                self.placesList.removeAll();
-                result.forEach(function(neighbour) {
-                    self.placesList.push(new Place(neighbour));
-                });
+                this.populatePlasesListFrom(result);
+            }
+        },
 
+        clearSearch: function() {
+            this.searchInput('');
+            this.populatePlasesListFrom(app.model.neighbourhood);
+        },
+
+        showInfoWindow: function(place) {
+            var status = false;
+            app.mapView.markers.forEach(function(marker) {
+                if (marker.position == place.geoCode) {
+                    app.mapView.showInfoWindow(place.geoCode, place.info, marker);
+                    status = true;
+                }
+            });
+            if (status === false) {
+                app.mapView.showInfoWindow(place.geoCode, place.info);
             }
         }
     }
