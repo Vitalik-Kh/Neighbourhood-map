@@ -18,11 +18,10 @@ body, html {
 
 #places-container {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 10%;
     z-index: 1;
     max-width: 250px;
-    max-height: 100%;
+    max-height: 80%;
     background: $places-backgr;
     color: $places-txt;
     overflow-y: auto;

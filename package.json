@@ -4,5 +4,8 @@
     "gulp-autoprefixer": "^4.1.0",
     "gulp-connect": "latest",
     "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "fuse-js-latest": "^3.1.0"
   }
 }
