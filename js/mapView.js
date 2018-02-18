@@ -1,8 +1,9 @@
 (function() {
     var geocoder;
-    var map;
+    window.map;
     var markers = [];
     window.initMap = function() {
+        myGoogle = google;
         geocoder = new google.maps.Geocoder();
         var center = {lat: 53.799, lng: -1.548};
         var htmlElem = document.getElementById('map-container');
@@ -27,7 +28,7 @@
                     addMarker(place.title, results[0].geometry.location);
                     counter++;
                 } else {
-                    throw('Geocoding was not successful because: ' + stutus);
+                    throw('Geocoding of ' + place.title + ' was not successful because: ' + stutus);
                 }
             });
         });
@@ -46,5 +47,6 @@
         });
         markers = [];
     };
+
 
 })();

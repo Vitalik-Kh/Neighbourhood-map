@@ -3,10 +3,18 @@
 <head>
     <title>Neighbourhood map</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' href='styles/styles.css'>
+    <link rel='stylesheet' type='text/css' href='styles/css/styles.css'>
 </head>
 <body lang='eng'>
 
+    <div id='places-container'>
+        <div id='search'>
+            <input type='text' placeholder="Search..">
+        </div>
+        <ul id='places' data-bind='foreach: {data: placesList, as: "place"}'>
+            <li data-bind='text: place.title'></li>
+        </ul>
+    </div>
     <div id='map-container'></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqeiyvT-_I2HtUTexxVm_Qfd-CUP_RIGQ&callback=initMap"
     async defer></script>

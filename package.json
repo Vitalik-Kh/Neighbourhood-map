@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "gulp": "latest",
-    "gulp-connect": "latest"
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-connect": "latest",
+    "gulp-sass": "^3.1.0"
   }
 }
