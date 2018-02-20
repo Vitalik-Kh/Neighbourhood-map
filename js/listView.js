@@ -42,12 +42,12 @@ var app = app || {};
             var status = false;
             app.mapView.markers.forEach(function(marker) {
                 if (marker.position == place.geoCode) {
-                    app.mapView.showInfoWindow(place.geoCode, place.info, marker);
+                    app.mapView.showInfoWindow(place, marker);
                     status = true;
                 }
             });
             if (status === false) {
-                app.mapView.showInfoWindow(place.geoCode, place.info);
+                app.mapView.showInfoWindow(place);
             }
         }
     }

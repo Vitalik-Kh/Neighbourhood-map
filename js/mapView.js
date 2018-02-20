@@ -25,26 +25,28 @@ var map, geocoder, initMap, infoWindow;
                 geocoder.geocode({'address': place.address}, function(results, status) {
                     if (status == 'OK') {
                         app.mapView.addMarker(
-                            place.title,
-                            results[0].geometry.location,
-                            place.info);
+                            place,
+                            results[0].geometry.location);
                         place.geoCode = results[0].geometry.location;
+
+                        app.model.fourSquareSearch(place);
                     } else {
                         throw('Geocoding of ' + place.title + ' was not successful because: ' + status);
                     }
                 });
+
             });
         },
-        addMarker: function(title, position, info) {
+        addMarker: function(place, position) {
             var newMarker = new google.maps.Marker({
                 position: position,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title: title
+                title: place.title
             });
             this.markers.push(newMarker);
             newMarker.addListener('click', function() {
-                app.mapView.showInfoWindow(position, info, newMarker);
+                app.mapView.showInfoWindow(place, newMarker);
             });
         },
         clearMarkers: function() {
@@ -53,12 +55,12 @@ var map, geocoder, initMap, infoWindow;
             });
             markers = [];
         },
-        showInfoWindow: function(position, info, marker) {
-            infoWindow.setContent(info);
+        showInfoWindow: function(place, marker) {
+            infoWindow.setContent(place.info || 'No information');
             if (marker) {
                 infoWindow.open(map, marker);
             } else {
-                infoWindow.setPosition(position);
+                infoWindow.setPosition(place.geoCode);
                 infoWindow.open(map);
             }
         }
