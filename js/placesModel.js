@@ -154,7 +154,7 @@ var app = app || {};
                 var ihtml = '';
                 ihtml += '<div class="infoBox">';
                 info.imgUrl?
-                ihtml += '<img src="' + info.imgUrl + '" width="350">':'';
+                ihtml += '<img src="' + info.imgUrl + '" width="250">':'';
                 ihtml += '<h1>' + info.title + '</h1>';
                 ihtml += info.address + '<br>';
                 info.phone?
