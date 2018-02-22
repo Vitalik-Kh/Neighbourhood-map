@@ -65,9 +65,21 @@ var app = app || {};
             this.address = ko.observable(data.address);
         },
 
+        toDoubleDigit: function(number) {
+            if (number < 10) {
+                number = 0 + '' + number;
+            }
+            return number;
+        },
+
         fourSquareSearch: function(place) {
             var clientID = 'NTS03D13RWM5UXOCD5QTQ5RHASCPX1VWJLKCLEQTXGPY130G';
             var clientSecret = 'FJEZ4WHAINE42GT54SVTLMXWTW0BZVI0ECBYCQPI5JGKSYUA';
+            var date = new Date();
+            var version =
+            date.getFullYear() + '' +
+            this.toDoubleDigit(date.getMonth() + 1) + '' +
+            this.toDoubleDigit(date.getDate());
             var url = 'https://api.foursquare.com/v2/venues/search';
             url += '?' + $.param({
                 'll': place.geoCode.lat() + ',' + place.geoCode.lng(),
@@ -76,7 +88,7 @@ var app = app || {};
                 'name': place.title,
                 'client_id': clientID,
                 'client_secret': clientSecret,
-                'v': '20180219'
+                'v': version
             });
 
             $.ajax({
