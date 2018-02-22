@@ -1,3 +1,3 @@
 var app = app || {};
-ko.applyBindings(app.listView, document.getElementById('places-container'));
+ko.applyBindings(app.listView);
 app.listView.init();

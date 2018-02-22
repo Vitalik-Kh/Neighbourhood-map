@@ -6,12 +6,12 @@
     <link rel='stylesheet' type='text/css' href='styles/css/styles.css'>
 </head>
 <body lang='eng'>
-    <div id='places-container'>
-        <div id='search-icon'>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+    <div id='search-icon' class='show-search-icon' data-bind='click: toggleSearchMenu'>
+        <div class='search-circle'></div>
+        <div class='search-line search-line-1'></div>
+        <div class='search-line search-line-2'></div>
+    </div>
+    <div id='places-container' class='show-list'>
         <div id='search'>
             <input data-bind='textInput: searchInput, event: { keyup: search }' type='text' placeholder="Search..">
             <span id='close-btn' data-bind='click: clearSearch'>&#10006;</span>

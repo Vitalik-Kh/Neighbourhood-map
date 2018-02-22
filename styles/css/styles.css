@@ -16,16 +16,83 @@ body, html {
   width: 100%;
 }
 
+.show-search-icon {
+  left: 200px !important;
+  padding: 0 !important;
+  margin-top: 14px !important;
+  height: 30px;
+}
+
+.show-search-icon .search-circle {
+  display: none;
+}
+
+.show-search-icon .search-line {
+  background: #59778b !important;
+  width: 24px !important;
+}
+
+.show-search-icon .search-line-1 {
+  -webkit-transform: translate(4px, 10px) rotate(45deg) !important;
+          transform: translate(4px, 10px) rotate(45deg) !important;
+}
+
+.show-search-icon .search-line-2 {
+  -webkit-transform: translate(4px, 10px) rotate(-45deg) !important;
+          transform: translate(4px, 10px) rotate(-45deg) !important;
+}
+
+.show-search-icon:hover .search-line {
+  background: #eff2f4 !important;
+}
+
+.show-list {
+  left: 0 !important;
+}
+
+#search-icon {
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  position: absolute;
+  left: 0;
+  top: 10%;
+  z-index: 2;
+  width: 32px;
+  padding-left: 10px;
+  margin-top: 22px;
+  cursor: pointer;
+}
+
+#search-icon .search-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 4px solid #33444f;
+}
+
+#search-icon .search-line {
+  position: absolute;
+  width: 14px;
+  height: 4px;
+  background: #33444f;
+  -webkit-transform: translate(22px, 0) rotate(45deg);
+          transform: translate(22px, 0) rotate(45deg);
+}
+
 #places-container {
+  -webkit-transition: all .4s;
+  transition: all .4s;
   position: absolute;
   top: 10%;
+  left: -240px;
   z-index: 1;
-  max-width: 250px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 240px;
   max-height: 80%;
   background: #33444f;
   color: #eff2f4;
-  overflow-y: auto;
-  padding: 26px 14px 26px 20px;
+  padding: 50px 14px 26px 20px;
 }
 
 #places-container #search {
@@ -49,6 +116,11 @@ body, html {
   color: black;
   top: 5px;
   cursor: pointer;
+  visibility: hidden;
+}
+
+#places-container #search:hover #close-btn {
+  visibility: visible;
 }
 
 #places-container ul#places {

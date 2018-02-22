@@ -16,28 +16,72 @@ body, html {
     width: 100%;
 }
 
+.show-search-icon {
+    left: 200px !important;
+    padding: 0 !important;
+    margin-top: 14px !important;
+    height: 30px;
+    .search-circle { display: none; }
+    .search-line {
+        background: #59778b !important;
+        width: 24px !important;
+    }
+    .search-line-1 {
+        transform: translate(4px, 10px) rotate(45deg) !important;
+    }
+    .search-line-2 {
+        transform: translate(4px, 10px) rotate(-45deg) !important;
+    }
+
+    &:hover {
+        .search-line {
+            background: $places-txt !important;
+        }
+    }
+}
+
+.show-list {
+    left: 0 !important;
+}
+
+#search-icon {
+    transition: all .4s;
+    position: absolute;
+    left: 0;
+    top: 10%;
+    z-index: 2;
+    width: 32px;
+    padding-left: 10px;
+    margin-top: 22px;
+    cursor: pointer;
+    .search-circle {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 4px solid $places-backgr;
+    }
+    .search-line {
+        position: absolute;
+        width: 14px;
+        height: 4px;
+        background: $places-backgr;
+        transform: translate(22px, 0) rotate(45deg);
+    }
+}
+
 #places-container {
+    transition: all .4s;
     position: absolute;
     top: 10%;
+    left: -240px;
     z-index: 1;
-    max-width: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 240px;
     max-height: 80%;
     background: $places-backgr;
     color: $places-txt;
-    overflow-y: auto;
-    padding: 26px 14px 26px 20px;
-
-    #search-icon {
-        position: absolute;
-        right: -40px;
-        top: 40px;
-        div {
-            width: 35px;
-            height: 10px;
-            margin: 8px auto;
-            background: gray;
-        }
-    }
+    padding: 50px 14px 26px 20px;
 
     #search {
         position: relative;
@@ -59,6 +103,11 @@ body, html {
             color: black;
             top: 5px;
             cursor: pointer;
+            visibility: hidden;
+        }
+
+        &:hover #close-btn {
+            visibility: visible;
         }
     }
 

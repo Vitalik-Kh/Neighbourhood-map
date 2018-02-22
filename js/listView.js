@@ -49,6 +49,11 @@ var app = app || {};
             if (status === false) {
                 app.mapView.showInfoWindow(place);
             }
+        },
+
+        toggleSearchMenu: function() {
+            $('#search-icon').toggleClass('show-search-icon');
+            $('#places-container').toggleClass('show-list');
         }
     }
 })();
