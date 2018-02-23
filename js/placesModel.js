@@ -155,11 +155,12 @@ var app = app || {};
                 ihtml += '<div class="infoBox">';
                 info.imgUrl?
                 ihtml += '<img src="' + info.imgUrl + '" width="250">':'';
-                ihtml += '<h1>' + info.title + '</h1>';
+                ihtml += '<h3>' + info.title + '</h3>';
                 ihtml += info.address + '<br>';
                 info.phone?
                 ihtml += 'Phone: ' + info.phone + '<br>':'';
-                ihtml += 'Rating: ' + info.rating + '<br>';
+                info.rating?
+                ihtml += 'Rating: ' + info.rating + '<br>':'';
                 info.website?
                 ihtml += '<a href="' + info.website + '" target="_blank">Website</a><br>':'';
                 if (info.hours) {

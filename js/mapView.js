@@ -13,7 +13,9 @@ var map, geocoder, initMap, infoWindow;
         google.maps.event.addDomListener(window, 'resize', function() {
             map.setCenter(center);
         });
-        infoWindow = new google.maps.InfoWindow();
+        infoWindow = new google.maps.InfoWindow({
+            maxWidth: 250
+        });
         app.mapView.createMarkersFrom(app.listView.placesList());
     };
 
@@ -28,7 +30,6 @@ var map, geocoder, initMap, infoWindow;
                             place,
                             results[0].geometry.location);
                         place.geoCode = results[0].geometry.location;
-
                         app.model.fourSquareSearch(place);
                     } else {
                         throw('Geocoding of ' + place.title + ' was not successful because: ' + status);
@@ -59,6 +60,10 @@ var map, geocoder, initMap, infoWindow;
             infoWindow.setContent(place.info || 'No information');
             if (marker) {
                 infoWindow.open(map, marker);
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+                setTimeout(function() {
+                    marker.setAnimation(null);
+                }.bind(this),1000);
             } else {
                 infoWindow.setPosition(place.geoCode);
                 infoWindow.open(map);
